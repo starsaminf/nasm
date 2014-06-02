@@ -5,7 +5,10 @@ section .data
     longitud2   equ $ - mensaje2
     tamano      equ 1024
     msgerror    db  10,"Hay un error al leer el fichero",10
-    errorlen    equ $-msgerror         
+    errorlen    equ $-msgerror   
+    msguion     db "-"    
+    msgnewline  db 10  
+    msgspace    db "_"
 
 section .bss
     buffer:     resb 1
@@ -22,12 +25,12 @@ _start:
     pop ebx 
     pop ebx
  ;testeo para ver la uri
-        mov eax,4
-        mov ebx,1
-        pop ecx         ;mostramos argumento
-        mov edx,29
-        push ecx        ;volvemos a ponerlo en stack
-        int 80h
+ ;       mov eax,4
+ ;       mov ebx,1
+ ;       pop ecx         ;mostramos argumento
+ ;       mov edx,29
+ ;       push ecx        ;volvemos a ponerlo en stack
+ ;       int 80h
  ;end testo
 
  ;abrir fichero
@@ -58,24 +61,66 @@ test eax,eax
 jns mostrar_por_pantalla ; cambia los flags, solo flags
 jmp hubo_error
 mostrar_por_pantalla:
-    mov eax,4              ;write(
-    mov ebx,1              ; STDOUT,
-    ;mov ecx,buffer         ; *buf
-    push ecx
-    mov ecx,""
-    pop ecx
-    int 80h                ; );
+;    mov eax,4              ;write(
+;    mov ebx,1              ; STDOUT,
+    ;mov ecx,buffer        ; *buf
+;    push ecx               ; guardamos en stack 
+;    int 80h                ; );
 
 ;Separa de 8 en 8 los grupos
+mov ecx,buffer
+push ecx                    ;save ecx, the string
+mov edi,2
+mov ebp,0
+ comienzo:
+    dec edi
+    pop ecx
+    cmp byte[ecx], 0        ;EOF archivo
+        je fin              ;si EOF true
+          mov esi,8
+          for:
+            cmp esi,0
+            je guion
+                   ;print 1 character
+                    mov eax,4
+                    mov ebx,1
+                    ; verificar si no es character especial
+                        cmp ecx,msgnewline      ;si es /n
+                           jne conti1
+                              mov ecx,msgspace
+                           jmp conti1
+                    ;end verificar
+                    conti1:
+                    mov edx,1 
+                    int 80h
+                    inc ecx
+                    dec si
+                   ;end character
+          jmp for
+          guion:                    ; cada 8 imprime
+            not ebp                 ;ebp=!ebp
+            push ecx                ;save ecx
+            mov eax,4
+            mov ebx,1
 
-
-
-
-
-
+            cmp ebp,0
+            je continue
+           
+            mov ecx,msguion
+            mov edx,1
+            int 80h
+    continue:
+    cmp edi,0
+    jnz comienzo
+    reset:
+      mov edi,2
+      mov eax,4
+      mov ebx,1
+      mov ecx,msgnewline
+      mov edx,1
+      int 80h
+  jmp comienzo
 ;end separa
-
-
 
 
 
