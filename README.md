@@ -1,21 +1,17 @@
-Materia Assembler NASM
+Materia Assembler NASM INFORMATICA - UMSA
+starsaminf.blogspot.com
+inf-121-lab.blogspot.com
 ====
-1.- Preparando el campo de batalla IDE
-    Yo uso Sublimtext 3 megusta mucho :D
-    Tener instaldo en Linux preferentemente :D
+Preparando campo de Batalla IDE SU	
 ====
-# Sublime-NASM
-_Intel x86 NASM_ syntax highlighting for _Sublime Text_.
 
-## Installation
-Navigate with Terminal in your `Packages` folder and type
-
-	git clone https://github.com/SalvoGentile/Sublime-NASM.git
-
-## Credits
-This package is based on the [Assembly-x86](https://github.com/ljgago/Assembly-x86) package from [Leonardo Gago](https://github.com/ljgago).
-
+## Installation highlighting for _Sublime Text_. :D
+cd /home/sam/.config/sublime-text-3/Packages/User/
+git clone https://github.com/SalvoGentile/Sublime-NASM.git
+Cambiar segun la ruta de sublime
 ## Script compilacion
+Para no estar a cada rato compilando y ejecuntando mejor este bonito script :D
+Para ejecutarlo en SublimText ctrol + B
 Run_nasm.sh
 ```
 #!/bin/bash
@@ -28,10 +24,12 @@ exit;
 exec /bin/bash';
  &"
 ```
+chmod +x Run_nasm.sh
 ###New Build System
+Sublim Text - >  Tools --> Build System --> New Build System
 ```
 {
-	"cmd": ["/opt/scrpt_sublime/Run_nasm.sh ${file_name} ${file_base_name}"],
+    "cmd": ["/opt/scrpt_sublime/Run_nasm.sh ${file_name} ${file_base_name}"],
     "shell": true
 }
 ```
