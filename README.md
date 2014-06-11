@@ -15,7 +15,7 @@ git clone https://github.com/SalvoGentile/Sublime-NASM.git
 Cambiar segun la ruta de sublime
 ## Script compilacion
 Para no estar a cada rato compilando y ejecuntando mejor este bonito script :D
-Para ejecutarlo en SublimText ctrol + B
+Para ejecutarlo en SublimText ctrl + B
 Run_nasm.sh
 ```
 #!/bin/bash
