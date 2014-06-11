@@ -1,13 +1,17 @@
 Materia Assembler NASM INFORMATICA - UMSA
+```
 starsaminf.blogspot.com
 inf-121-lab.blogspot.com
+```
 ====
 Preparando campo de Batalla IDE SU	
 ====
 
 ## Installation highlighting for _Sublime Text_. :D
+```
 cd /home/sam/.config/sublime-text-3/Packages/User/
 git clone https://github.com/SalvoGentile/Sublime-NASM.git
+```
 Cambiar segun la ruta de sublime
 ## Script compilacion
 Para no estar a cada rato compilando y ejecuntando mejor este bonito script :D
