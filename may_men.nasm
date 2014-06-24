@@ -1,7 +1,15 @@
+%macro print_generic 2
+        mov eax,4           ; write(
+        mov ebx,1           ;   STDOUT,
+        mov ecx,%1          ;   *buf
+        mov edx,%2          ; );
+        int 80h
+%endmacro
 section .data	
 	gui		db "-"
-	vectore dw "9","9","9","9","9","0","9","9","9","1"
+	vectore dw "9","9","9","6","8","6","9","9","9","1"
 	end		db 10
+	space 	db " "
 	min 	db '9'
 	max 	db '0'
 section .bss
@@ -37,17 +45,9 @@ _for:
 	inc eax	
 dec ecx				;solo por molestar 
 loop _for
-		mov ecx,max
-		mov eax,4      
-        mov ebx,1        
-        mov edx,1
-        int 80h
-
-        mov ecx,min
-		mov eax,4      
-        mov ebx,1        
-        mov edx,1
-        int 80h
+		print_generic max,1
+		print_generic space,1
+		print_generic min,1
 mov eax,1
 mov ebx,0
 int 80h
