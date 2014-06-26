@@ -38,6 +38,7 @@ Sublim Text - >  Tools --> Build System --> New Build System
 }
 ```
 ###movzx###
+```
 MOVZX 指令
  
 Variantes instrucción de transferencia de datos en lenguaje ensamblador MOV. Sin extensión de signo, y enviar.
@@ -55,5 +56,5 @@ movzx es copiar el contenido del operando fuente al operando destino, y el valor
 　　Después de ejecutar la compilación de la sentencia anterior, AX valor 0080H. Debido BL es 80H, el bit más alto que es el bit de signo es 1, pero sin hacer extensión de signo, la extensión de la alta-8 son iguales a cero, por lo que el AX asignación es 0080H.
 　　Resumen:
 　　movzx hecho, nuestro operando fuente sacado, y luego se coloca en el operando destino, el operando destino trozos llenos de ceros restantes.
-
+```
 
